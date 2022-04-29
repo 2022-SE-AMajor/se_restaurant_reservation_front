@@ -48,7 +48,8 @@ align-items: center;
 
 
 export const IdInput = styled.input.attrs({
-placeholder:"아이디"
+    placeholder:"아이디",
+    type:"text",
 })`
 font-size:2em;
 width:400px;
@@ -58,7 +59,8 @@ border-radius: 10px;
 margin-bottom: 1em;
 `
 export const PsInput = styled.input.attrs({
-placeholder:"비밀번호"
+    placeholder:"비밀번호",
+    type:"password",
 })`
 font-size:2em;
 width:400px;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 import { AiFillFacebook, AiFillInstagram, AiFillTwitterCircle } from"react-icons/ai"
@@ -6,6 +6,25 @@ import { Body,
     Container, Footer, IconContainer, IdInput, ImageContainer, LoginContainer, LoigInForm, PsInput, Row, RowsContainer, RowText, RowTitleText, SubmitButton, SubTitle, Title, TitleConatiner } from '../components/LoginPageComponents';
 
 export default function LogInPage() {
+
+    const [id,setId] = useState('');
+    const [password,setPassword] = useState('');
+
+    const handleIdChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+        const {value} = e.target;
+        setId(value);
+    }
+    const handlePsChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+        const {value} = e.target;
+        setPassword(value);
+        
+    }
+    const handleSubmit= (e:React.FormEvent<HTMLFormElement>) =>{
+        e.preventDefault();
+        console.log(id, password)
+    }
+
+
   return (
     <Container>
         <Body>
@@ -18,9 +37,17 @@ export default function LogInPage() {
                         당신의 계정을 입력하세요
                     </SubTitle>
                 </TitleConatiner>
-                <LoigInForm>
-                    <IdInput/>
-                    <PsInput/>
+                <LoigInForm
+                    onSubmit={handleSubmit}
+                >
+                    <IdInput
+                        onChange={handleIdChange}
+                        value={id}
+                    />
+                    <PsInput
+                        onChange={handlePsChange}
+                        value={password}
+                    />
                     <SubmitButton>
                         Log In
                     </SubmitButton>
