@@ -1,21 +1,26 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 import styled from 'styled-components'
+import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import LogInPage from './pages/LogInPage';
 
 
-const Container = styled.div({
-  margin: '0 auto',
-  width: '90%',
-});
+const Container = styled.div`
+  
+`;
 
-const Header = styled.header`
-`
+
 
 function App() {
   return (
     <Container>
-      <Header>
-          헤더
-      </Header>
+      <Header/>
+      <Routes>
+        <Route path="/" element={<LogInPage/>} />
+        <Route path="/home" element={<HomePage/>} />
+      </Routes>
     </Container>
       
   );
