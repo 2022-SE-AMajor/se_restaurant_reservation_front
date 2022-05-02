@@ -9,23 +9,57 @@ export const Body = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  background-color: #b8b8b8;
   height: 1000px;
 `;
 
-export const LoginContainer = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+export const ImageContainer = styled.img.attrs({
+  src: require("./images/banner2.png"),
+})`
+  width: 700px;
+  height: 400px;
+  position: relative;
+  top: 15%;
+  left: 2%;
 `;
-export const ImageContainer = styled.div`
-  flex: 1;
-  background-image: url(${require("./images/banner1.png")});
-  background-size: cover;
-  // background-repeat: repeat-y;
-  background-position: center;
+export const TableContainer = styled.form`
+  width: 700px;
+  height: 510px;
+  position: relative;
+  top: 12%;
+  left: 5%;
+  background-color: #e3e3e3;
 `;
-
+export const Table = styled.button`
+  width: 120px;
+  height: 80px;
+  margin: 3%;
+  margin-left: 4%;
+  background-color: #2ec160;
+  box-shadow: 3px 3px gray;
+  border-radius: 10px;
+`;
+export const Tablee = styled.button`
+  width: 120px;
+  height: 80px;
+  margin: 3%;
+  margin-left: 4%;
+  background-color: #d3d3d3;
+  box-shadow: 3px 3px gray;
+  border-radius: 10px;
+`;
+export const TimeButtonContainer = styled.form`
+  width: 1000px;
+  height: 300px;
+  position: relative;
+  top: 70%;
+  left: -40%;
+`;
+export const TimeButton = styled.button`
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+  margin: 2px;
+`;
 export const TitleConatiner = styled.div`
   padding-top: 10em;
   display: flex;
@@ -43,28 +77,6 @@ export const LoigInForm = styled.form`
   align-items: center;
 `;
 
-export const IdInput = styled.input.attrs({
-  placeholder: "아이디",
-  type: "text",
-})`
-  font-size: 2em;
-  width: 400px;
-  height: 70px;
-  border: 1px solid #d9d9d9;
-  border-radius: 10px;
-  margin-bottom: 1em;
-`;
-export const PsInput = styled.input.attrs({
-  placeholder: "비밀번호",
-  type: "password",
-})`
-  font-size: 2em;
-  width: 400px;
-  height: 70px;
-  border: 1px solid #d9d9d9;
-  border-radius: 10px;
-  margin-bottom: 2em;
-`;
 export const SubmitButton = styled.button`
   font-size: 2em;
   width: 400px;

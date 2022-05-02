@@ -1,19 +1,40 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AnyAction } from 'redux';
+import { Dispatch } from "react";
+import { login, } from "./api";
+export type InitialStateProp={
+  isLogedIn: boolean,
+}
 
-export const { actions, reducer }  = createSlice({
-  name: 'app',
+
+export const { actions, reducer } = createSlice({
+  name: "app",
   initialState: {
-    value: 0
+    isLogedIn: false,
   },
   reducers: {
-    increment: state => {
-      state.value += 1
-    },
-    decrement: state => {
-      state.value -= 1
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+    setLogedInTrue: (state) => ({
+     ...state,
+     isLogedIn: true
+    }),
+  },
+});
+
+export const {
+  setLogedInTrue,
+} = actions
+
+export function requestLogin({id,password}:any){
+  return async (dispatch:Dispatch<AnyAction>,getState:InitialStateProp )=>{
+    try {
+      console.log("requestLogin 진입")
+      login({id,password}).then(response =>{console.log("response",response)})
+      // console.log("requestLogin",state)
+      
+      dispatch(setLogedInTrue());
+    }catch (err) {
+
     }
   }
-})
+
+}
