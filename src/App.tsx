@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+import styled from "styled-components";
+import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
+import LogInPage from "./pages/LogInPage";
+import CanclePage from "./pages/Canclepage";
+import ModifyListPage from "./pages/ModifyListpage";
+import OnsiteReservPage from "./pages/OnsiteReservpage";
+import Footer from "./components/Footer";
+import { useSelector } from "react-redux";
+import { InitialStateProp } from "./slice";
+
+const Container = styled.div``;
+
+export default function App() {
+  const {isLogedIn} = useSelector((state:InitialStateProp) =>({
+    isLogedIn: state.isLogedIn
+  }))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header />
+      <Routes>
+      {isLogedIn ? 
+        <Route path="/" element={<HomePage />} />:
+        <Route path="/" element={<LogInPage />} />
+        }
+        <Route path="/cancle" element={<CanclePage />} />
+        <Route path="/modifyList" element={<ModifyListPage />} />
+        <Route path="/onsiteReserv" element={<OnsiteReservPage />} />
+      </Routes>
+      <Footer/>
+    </Container>
   );
 }
-
-export default App;
