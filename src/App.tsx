@@ -23,9 +23,9 @@ export default function App() {
     <Container>
       <Header />
       <Routes>
-        {isLogedIn ? 
-          <Route path="/" element={<HomePage />} />:
-          <Route path="/" element={<LogInPage />} />
+      {isLogedIn ? 
+        <Route path="/" element={<HomePage />} />:
+        <Route path="/" element={<LogInPage />} />
         }
         <Route path="/cancle" element={<CanclePage />} />
         <Route path="/modifyList" element={<ModifyListPage />} />
