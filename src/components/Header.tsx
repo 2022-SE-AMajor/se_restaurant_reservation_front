@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { InitialStateProp, setLogedInFalse } from "../slice";
 
 const Container = styled.div`
   background-color: white;
@@ -36,10 +38,27 @@ const Text = styled.span`
 `;
 
 export default function Header() {
+  const {isLogedIn} = useSelector((state:InitialStateProp) =>({
+    isLogedIn: state.isLogedIn
+  }))
+  const dispatch = useDispatch()
+
   return (
     <Container>
       <Title>wolfgang steakhouse</Title>
       <Menu>
+
+      {isLogedIn?
+      <Text
+      onClick={()=>{
+        dispatch(setLogedInFalse())
+      }}
+    >
+      로그아웃
+    </Text>:
+    null
+      }
+      
         <Text>예약 조회</Text>
         <Text>사전 예약</Text>
         <Text>예약 정보 변경</Text>

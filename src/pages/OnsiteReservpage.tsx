@@ -27,7 +27,7 @@ import {
 } from "../components/ShowTable";
 
 export default function OnsiteReservPage() {
-  const [table, setTable] = useState(false);
+  // const [table, setTable] = useState(false);
 
   return (
     <Container>
