@@ -23,7 +23,7 @@ import {
   SubTitle,
 } from "../components/HomePageComponent";
 
-export default function HomePage() {
+export default function HomePage(){
   return (
     <Container>
       <Body>
