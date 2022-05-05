@@ -46,3 +46,5 @@ export function requestLogin({id,password}:any){
   }
 
 }
+
+export default reducer;
