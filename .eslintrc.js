@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb',
   ],
   settings: {
     'import/resolver': {
@@ -24,6 +23,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
+    "import",
     'react',
     '@typescript-eslint',
   ],
