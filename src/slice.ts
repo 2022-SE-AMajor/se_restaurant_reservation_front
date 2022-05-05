@@ -17,29 +17,21 @@ export const { actions, reducer } = createSlice({
      ...state,
      isLogedIn: true
     }),
-    setLogedInFalse: (state) => ({
-      ...state,
-      isLogedIn: false
-     }),
   },
 });
 
 export const {
   setLogedInTrue,
-  setLogedInFalse
 } = actions
 
 export function requestLogin({id,password}:any){
   return async (dispatch:Dispatch<AnyAction>,getState:InitialStateProp )=>{
     try {
       console.log("requestLogin 진입")
-      login({id,password}).then(response =>{
-        console.log("response",response)
-        if(response.status === 200){
-          dispatch(setLogedInTrue());
-        }
-      })
+      login({id,password}).then(response =>{console.log("response",response)})
       // console.log("requestLogin",state)
+      
+      dispatch(setLogedInTrue());
     }catch (err) {
 
     }
