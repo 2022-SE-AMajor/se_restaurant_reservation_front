@@ -15,23 +15,24 @@ import { InitialStateProp } from "./slice";
 const Container = styled.div``;
 
 export default function App() {
-  const {isLogedIn} = useSelector((state:InitialStateProp) =>({
-    isLogedIn: state.isLogedIn
-  }))
+  const { isLogedIn } = useSelector((state: InitialStateProp) => ({
+    isLogedIn: state.isLogedIn,
+  }));
 
   return (
     <Container>
       <Header />
       <Routes>
-      {isLogedIn ? 
-        <Route path="/" element={<HomePage />} />:
-        <Route path="/" element={<LogInPage />} />
-        }
+        {isLogedIn ? (
+          <Route path="/home" element={<HomePage />} />
+        ) : (
+          <Route path="/" element={<LogInPage />} />
+        )}
         <Route path="/cancle" element={<CanclePage />} />
         <Route path="/modifyList" element={<ModifyListPage />} />
         <Route path="/onsiteReserv" element={<OnsiteReservPage />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </Container>
   );
 }
