@@ -34,12 +34,16 @@ export const CalendarContainer = styled.div`
     line-height: 3em;
     font-size: 20px;
   }
+  .react-calendar__navigation button {
+    border: 0px;
+  }
   .react-calendar button {
     width: 5%;
     font-size: 15px;
   }
   .react-calendar__month-view__days__day--weekend {
     color: #000000;
+    border: 0px;
   }
   .react-calendar__month-view__weekdays {
     text-align: center;
@@ -53,6 +57,7 @@ export const CalendarContainer = styled.div`
     background: none;
     text-align: center;
     line-height: 30px;
+    border: 0px;
   }
   .react-calendar__tile--now {
     background: #ffffff;
@@ -88,7 +93,7 @@ export const SubmitButton = styled.button`
   border-radius: 5px;
   margin-left: 15px;
   margin-top: 15px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.color};
   box-shadow: 3px 3px gray;
 `;
 export const NextButton = styled.button`
@@ -97,7 +102,7 @@ export const NextButton = styled.button`
   left: 80%;
   width: 120px;
   height: 50px;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
   background-color: #2f80ed;
   color: white;

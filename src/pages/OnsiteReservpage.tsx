@@ -8,21 +8,13 @@ import {
 import {
   Body,
   Container,
-  Footer,
-  IconContainer,
   ImageContainer,
-  Row,
-  RowsContainer,
-  RowText,
-  RowTitleText,
   SubmitButton,
   SubTitle,
   Title,
   TitleConatiner,
   TableContainer,
   Table,
-  TimeButton,
-  TimeButtonContainer,
   Tablee,
 } from "../components/ShowTable";
 
