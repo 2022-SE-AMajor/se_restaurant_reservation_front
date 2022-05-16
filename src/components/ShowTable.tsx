@@ -21,12 +21,55 @@ export const ImageContainer = styled.img.attrs({
   top: 15%;
   left: 2%;
 `;
+export const Date = styled.div`
+  position: relative;
+  top: 7%;
+  left: -15%;
+  font-weight: bold;
+  font-size: 35px;
+`;
+export const Time = styled.div`
+  position: relative;
+  top: 7%;
+  left: 16%;
+  font-weight: bold;
+  font-size: 35px;
+`;
+export const NameForm = styled.form`
+  flex-direction: column;
+  position: relative;
+  top: 65%;
+  left: -18%;
+`;
+
+export const NameInput = styled.input.attrs({
+  placeholder: "이름",
+  type: "text",
+})`
+  font-size: 1em;
+  width: 300px;
+  height: 60px;
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  margin-bottom: 40px;
+`;
+export const PhoneInput = styled.input.attrs({
+  placeholder: "전화번호",
+  type: "text",
+})`
+  font-size: 1em;
+  width: 300px;
+  height: 60px;
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  margin-bottom: 2em;
+`;
 export const TableContainer = styled.div`
   width: 700px;
   height: 500px;
   position: relative;
   top: 12%;
-  left: 5%;
+  left: -30%;
   background-color: #e3e3e3;
 `;
 export const Table = styled.button`

@@ -6,14 +6,23 @@ import {
   ImageContainer,
   TableContainer,
   Table,
-  Tablee,
   SelectContainer,
   Select,
   NextButton,
+  NameForm,
+  NameInput,
+  PhoneInput,
+  Date,
+  Time,
 } from "../components/ShowTable";
 import { useDispatch } from "react-redux";
+import { Title } from "../components/HomePageComponent";
 
 export default function ReservPage_table() {
+  const { date } = useParams();
+  useEffect(() => {
+    console.log(date);
+  }, []);
   const SelectBox1 = () => {
     return (
       <Select>
@@ -73,6 +82,12 @@ export default function ReservPage_table() {
     <Container>
       <Body>
         <ImageContainer />
+        <NameForm>
+          <NameInput />
+          <PhoneInput />
+        </NameForm>
+        <Date>2020.6.4</Date>
+        <Time>16:00</Time>
         <TableContainer>
           <Table onClick={() => setIsSelect(1)} />
           <Table onClick={() => setIsSelect(2)} />
