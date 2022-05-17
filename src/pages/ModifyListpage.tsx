@@ -43,7 +43,7 @@ export default function ModifyListPage() {
             <ListDescription>예약 정보를 이곳에 표시하세요</ListDescription>
             <ListButton>선택하기</ListButton>
           </List>
-          <Link to="/onsiteReserv">
+          <Link to="/modifyList_date">
             <CancleButton>예약 수정</CancleButton>
           </Link>
         </TitleConatiner>
