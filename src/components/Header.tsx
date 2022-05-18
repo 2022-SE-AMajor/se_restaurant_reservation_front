@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -40,11 +41,21 @@ export default function Header() {
     <Container>
       <Title>wolfgang steakhouse</Title>
       <Menu>
-        <Text>예약 조회</Text>
-        <Text>사전 예약</Text>
-        <Text>예약 정보 변경</Text>
-        <Text>예약 취소</Text>
-        <Text>현장 예약</Text>
+        <Link to="/">
+          <Text>예약 조회</Text>
+        </Link>
+        <Link to="/reservPage_date">
+          <Text>사전 예약</Text>
+        </Link>
+        <Link to="/modifyList">
+          <Text>예약 정보 변경</Text>
+        </Link>
+        <Link to="/cancle">
+          <Text>예약 취소</Text>
+        </Link>
+        <Link to="/onsiteReserv">
+          <Text>현장 예약</Text>
+        </Link>
       </Menu>
     </Container>
   );
