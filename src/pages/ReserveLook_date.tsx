@@ -14,7 +14,7 @@ import {
 } from "../components/ShowCalendar";
 import { useDispatch } from "react-redux";
 
-export default function ReservPage_date() {
+export default function ReserveLook_date() {
   const { selectDate, selectTime } = useParams();
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(0);
@@ -46,7 +46,7 @@ export default function ReservPage_date() {
             <SubmitButton onClick={() => setTime(17)}>17:00</SubmitButton>
             <SubmitButton onClick={() => setTime(18)}>18:00</SubmitButton>
           </ButtonContainer>
-          <Link to="/reservPage_table/">
+          <Link to="/reserveLook_table/">
             <NextButton>next</NextButton>
           </Link>
         </CalendarContainer>
