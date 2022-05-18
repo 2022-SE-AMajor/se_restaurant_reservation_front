@@ -41,7 +41,7 @@ export default function Header() {
     <Container>
       <Title>wolfgang steakhouse</Title>
       <Menu>
-        <Link to="/">
+        <Link to="/reserveLook_date">
           <Text>예약 조회</Text>
         </Link>
         <Link to="/reservPage_date">

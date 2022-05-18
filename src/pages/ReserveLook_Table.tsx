@@ -10,9 +10,11 @@ import {
   SelectContainer,
   Select,
   NextButton,
+  Date,
+  Time,
 } from "../components/ModifyListpage_tableComponent";
 
-export default function ModifyListPage_table() {
+export default function ReserveLook_Table() {
   const SelectBox1 = () => {
     return (
       <Select>
@@ -50,6 +52,8 @@ export default function ModifyListPage_table() {
     <Container>
       <Body>
         <ImageContainer />
+        <Date>2020.6.4</Date>
+        <Time>16:00</Time>
         <TableContainer>
           <Table onClick={() => setIsSelect(1)} />
           <Table onClick={() => setIsSelect(2)} />
@@ -67,9 +71,7 @@ export default function ModifyListPage_table() {
           <Table onClick={() => setIsSelect(14)} />
           <Table onClick={() => setIsSelect(15)} />
           <Table onClick={() => setIsSelect(16)} />
-          <SelectContainer>
-            000님 [3인] 010-@@@@_@@@@
-          </SelectContainer>
+          <SelectContainer>000님 [3인] 010-@@@@_@@@@</SelectContainer>
           <NextButton>next</NextButton>
         </TableContainer>
       </Body>

@@ -26,7 +26,7 @@ export default function HomePage() {
           <Title>레스토랑 예약 메뉴</Title>
         </TitleConatiner>
         <ButtonContainer>
-          <Link to="/">
+          <Link to="/reserveLook_date">
             <ImageCheck />
             <SubTitle>예약 조회</SubTitle>
           </Link>
@@ -42,7 +42,7 @@ export default function HomePage() {
             <ImageCancle />
             <SubTitle>예약 취소</SubTitle>
           </Link>
-          <Link to="/">
+          <Link to="/arrivalPage">
             <Imagearrival />
             <SubTitle>현장 도착</SubTitle>
           </Link>

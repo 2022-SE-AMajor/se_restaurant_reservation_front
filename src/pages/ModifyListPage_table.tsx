@@ -9,6 +9,8 @@ import {
   SelectContainer,
   Select,
   NextButton,
+  Date,
+  Time,
 } from "../components/ModifyListpage_tableComponent";
 
 export default function ModifyListPage_table() {
@@ -49,6 +51,8 @@ export default function ModifyListPage_table() {
     <Container>
       <Body>
         <ImageContainer />
+        <Date>2020.6.4</Date>
+        <Time>16:00</Time>
         <TableContainer>
           <Table onClick={() => setIsSelect(1)} />
           <Table onClick={() => setIsSelect(2)} />
