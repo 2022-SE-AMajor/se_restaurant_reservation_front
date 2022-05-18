@@ -1,29 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  AiFillFacebook,
-  AiFillInstagram,
-  AiFillTwitterCircle,
-} from "react-icons/ai";
-import {
   Body,
   Container,
-  Footer,
-  IconContainer,
-  Row,
-  RowsContainer,
-  RowText,
-  RowTitleText,
   ImageContainer,
   ListTitle,
   ListDescription,
   Title,
   TitleConatiner,
   List,
-  InputCheckbox,
   ListButton,
   CancleButton,
-} from "../components/ShowList";
+} from "../components/ModifyListpageComponent";
 
 export default function ModifyListPage() {
   return (
@@ -43,7 +31,7 @@ export default function ModifyListPage() {
             <ListDescription>예약 정보를 이곳에 표시하세요</ListDescription>
             <ListButton>선택하기</ListButton>
           </List>
-          <Link to="/onsiteReserv">
+          <Link to="/modifyList_date">
             <CancleButton>예약 수정</CancleButton>
           </Link>
         </TitleConatiner>
