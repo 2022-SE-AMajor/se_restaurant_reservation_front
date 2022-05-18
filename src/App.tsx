@@ -31,7 +31,7 @@ export default function App() {
         {isLogedIn ? (
           <Route path="/" element={<HomePage />} />
         ) : (
-          <Route path="/" element={<LogInPage />} />
+          <Route path="/" element={<HomePage />} />
         )}
         <Route path="/cancle" element={<CanclePage />} />
         <Route path="/modifyList" element={<ModifyListPage />} />
