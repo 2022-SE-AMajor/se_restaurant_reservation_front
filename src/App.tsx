@@ -13,6 +13,7 @@ import OnsiteReservPage from "./pages/OnsiteReservpage";
 import ReservPage_date from "./pages/ReservPage_date";
 import ReservPage_table from "./pages/ReservPage_table";
 import StatisticPage from "./pages/StatisticPage";
+import ArrivalPage from "./pages/ArrivalPage";
 import Footer from "./components/Footer";
 import { useSelector } from "react-redux";
 import { InitialStateProp } from "./slice";
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/reservPage_date" element={<ReservPage_date />} />
         <Route path="/reservPage_table/:date" element={<ReservPage_table />} />
         <Route path="/statisticPage" element={<StatisticPage />} />
+        <Route path="/arrivalPage" element={<ArrivalPage />} />
       </Routes>
       <Footer />
     </Container>
