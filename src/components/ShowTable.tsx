@@ -21,12 +21,55 @@ export const ImageContainer = styled.img.attrs({
   top: 15%;
   left: 2%;
 `;
-export const TableContainer = styled.form`
+export const Date = styled.div`
+  position: relative;
+  top: 7%;
+  left: -15%;
+  font-weight: bold;
+  font-size: 35px;
+`;
+export const Time = styled.div`
+  position: relative;
+  top: 7%;
+  left: 16%;
+  font-weight: bold;
+  font-size: 35px;
+`;
+export const NameForm = styled.form`
+  flex-direction: column;
+  position: relative;
+  top: 65%;
+  left: -18%;
+`;
+
+export const NameInput = styled.input.attrs({
+  placeholder: "이름",
+  type: "text",
+})`
+  font-size: 1em;
+  width: 300px;
+  height: 60px;
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  margin-bottom: 40px;
+`;
+export const PhoneInput = styled.input.attrs({
+  placeholder: "전화번호",
+  type: "text",
+})`
+  font-size: 1em;
+  width: 300px;
+  height: 60px;
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  margin-bottom: 2em;
+`;
+export const TableContainer = styled.div`
   width: 700px;
-  height: 510px;
+  height: 500px;
   position: relative;
   top: 12%;
-  left: 5%;
+  left: -30%;
   background-color: #e3e3e3;
 `;
 export const Table = styled.button`
@@ -47,18 +90,21 @@ export const Tablee = styled.button`
   box-shadow: 3px 3px gray;
   border-radius: 10px;
 `;
-export const TimeButtonContainer = styled.form`
-  width: 1000px;
-  height: 300px;
-  position: relative;
-  top: 70%;
-  left: -40%;
+export const SelectContainer = styled.div`
+  width: 680px;
+  height: 45px;
+  background-color: #a3a3a3;
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 25px;
+  padding: 10px;
 `;
-export const TimeButton = styled.button`
-  width: 80px;
-  height: 30px;
-  border-radius: 7px;
-  margin: 2px;
+export const Select = styled.select`
+  position: relative;
+  left: 50%;
+  width: 180px;
+  height: 40px;
+  font-size: 22px;
 `;
 export const TitleConatiner = styled.div`
   padding-top: 10em;
@@ -70,13 +116,6 @@ export const Title = styled.span`
   font-size: 3em;
 `;
 export const SubTitle = styled.span``;
-export const LoigInForm = styled.form`
-  padding-top: 10em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const SubmitButton = styled.button`
   font-size: 2em;
   width: 400px;
@@ -85,39 +124,15 @@ export const SubmitButton = styled.button`
   box-sizing: border-box;
   border-radius: 10px;
 `;
-
-export const Footer = styled.div`
-  background: #b8e0ef;
-  width: 100%;
-  height: 300px;
-  flex-direction: column;
-`;
-
-export const IconContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding-top: 1em;
-  padding-right: 2em;
-`;
-export const RowsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 0 5em;
-  padding-top: 1em;
-`;
-export const Row = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const RowTitleText = styled.span`
-  font-size: 2em;
-  padding-bottom: 0.5em;
-`;
-
-export const RowText = styled.span`
-  padding-bottom: 1em;
+export const NextButton = styled.button`
+  position: relative;
+  top: 15%;
+  left: 80%;
+  width: 120px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #2f80ed;
+  color: white;
+  border-radius: 5px;
 `;

@@ -31,8 +31,8 @@ export default function LogInPage() {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch<any>(requestLogin({ id, password }))
-    // console.log("handleSubmit", id, password);
+    dispatch<any>(requestLogin({ id, password }));
+    //console.log("handleSubmit", id, password);
   };
 
   return (
