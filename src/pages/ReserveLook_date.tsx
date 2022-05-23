@@ -7,27 +7,47 @@ import {
   Body,
   Container,
   ImageContainer,
-  SubmitButton,
+  TimeButton,
   CalendarContainer,
   ButtonContainer,
   NextButton,
 } from "../components/ShowCalendar";
 import { useDispatch } from "react-redux";
+import ReserveLook_Table from "./ReserveLook_Table";
 
 export default function ReserveLook_date() {
   const { selectDate, selectTime } = useParams();
   const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState("");
+  const times = [
+    "9:00",
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
+    "18:00"
+  ]
+  const dashStyleDate = (YMD: any) => {
+    const year = YMD.getFullYear();
+    const month = YMD.getMonth() + 1;
+    const theDate = YMD.getDate();
+    return `${year}-${month >= 10 ? month : '0' + month}-${theDate >= 10 ? theDate : '0' + theDate}`
+  }
   useEffect(() => {
     console.log(date);
   }, [date]);
   useEffect(() => {
     console.log(time);
   }, [time]);
+
   return (
     <Container>
       <Body>
-        <ImageContainer />
+        {/* <ImageContainer /> */}
         <CalendarContainer>
           <Calendar
             onChange={setDate}
@@ -35,21 +55,23 @@ export default function ReserveLook_date() {
             showNeighboringMonth={false}
           />
           <ButtonContainer>
-            <SubmitButton onClick={() => setTime(9)}>9:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(10)}>10:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(11)}>11:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(12)}>12:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(13)}>13:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(14)}>14:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(15)}>15:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(16)}>16:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(17)}>17:00</SubmitButton>
-            <SubmitButton onClick={() => setTime(18)}>18:00</SubmitButton>
+            {times.map(aTime => {
+              return <TimeButton key={aTime}
+                value={aTime === time ? "checked" : "unchecked"}
+                onClick={() => setTime(aTime)}>{aTime}</TimeButton>
+            })}
+
           </ButtonContainer>
-          <Link to="/reserveLook_table/">
-            <NextButton>next</NextButton>
-          </Link>
         </CalendarContainer>
+        {time === "" ? <div
+          style={{ flex: 1 }}
+        /> :
+          <ReserveLook_Table
+            date={dashStyleDate(date)}
+            time={time}
+          />
+        }
+
       </Body>
     </Container>
   );
