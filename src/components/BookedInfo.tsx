@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { cancelReservation, getArrival, modifyReservation, recordArrival } from '../api'
 import { ReservationInfoProps } from '../pages/ReserveLook_Table'
+import { setRefresh } from '../slice'
 import { SelectContainer } from './ModifyListpage_tableComponent'
 
 type BookedInfoProps = {
     tableId: string
     bookInfo: ReservationInfoProps
+    date: string;
+    time: string;
 }
 
 
@@ -52,9 +57,92 @@ const SelectorInput = styled.select`
     flex: 4;
 `
 
+const ArraivalInfoContainer = styled.div`
+display:flex;
+/* gap:px;/ */
+`
+
 export default function BookedInfo({
-    tableId, bookInfo
+    tableId, bookInfo, date, time
 }: BookedInfoProps) {
+    const [arrivelTime, setArriavalTime] = useState('')
+    const [modification, setModification] = useState(0)
+    const [name, setName] = useState<string>(bookInfo.name);
+    const [covers, setCovers] = useState<string>(`${bookInfo.covers}`);
+    const [phoneNumber, setPhoneNumber] = useState<string>(bookInfo.phone_number);
+    // const [name, setName] = useState<string>(bookInfo.name);
+    // const [covers, setCovers] = useState<string>(`${bookInfo.covers}`);
+    // const [phoneNumber, setPhoneNumber] = useState<string>(bookInfo.phone_number);
+
+    useEffect(() => {
+        setName(bookInfo.name)
+        setCovers(`${bookInfo.covers}`)
+        setPhoneNumber(bookInfo.phone_number)
+    }, [bookInfo])
+
+    const dispatch = useDispatch()
+    const handleReservation = () => {
+        cancelReservation(`${bookInfo.oid}`).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        }).finally(() => {
+            dispatch(setRefresh((value: any) => !value))
+        })
+    }
+
+    const handleRecordArrival = async () => {
+        await recordArrival({
+            table_id: `${bookInfo.table_id}`,
+            date: date,
+            time: time
+        }).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        }).finally(() => {
+            dispatch(setRefresh((value: any) => !value))
+        })
+    }
+
+    const handleReservationModification = async () => {
+        if (modification === 0) {
+            console.log("예약 수정을 가능하게 합니다.")
+
+        } else if (modification === 1) {
+            await modifyReservation({
+                oid: `${bookInfo.oid}`,
+                date,
+                time,
+                covers,
+                tableId: `${bookInfo.table_id}`,
+                name,
+                phoneNumber
+            }).then(res => {
+                console.log(res)
+                // dispatch(setRefresh((value: any) => !value))
+            })
+            console.log("예약 수정 요청완료.")
+        }
+        setModification((modification + 1) % 2)
+
+    }
+
+    useEffect(() => {
+        if (bookInfo.state === 2) {
+            getArrival(`${bookInfo.oid}`).then(res => {
+                console.log(res.data.result[0])
+                setArriavalTime(res.data.result[0].arrival_time)
+            }).catch(err => {
+                console.log(err)
+                setArriavalTime('')
+            })
+        } else {
+            setArriavalTime('')
+
+        }
+    }, [bookInfo.oid])
+
     return (
         <SelectContainer>
             <Header>
@@ -66,8 +154,10 @@ export default function BookedInfo({
                         이름
                     </Text>
                     <TextInput
-                        disabled
-                        value={bookInfo.name}
+                        disabled={!modification}
+                        value={name}
+                        onChange={(event) =>
+                            setName(event.target.value)}
                     />
                 </InputContainer>
                 <InputContainer>
@@ -75,8 +165,10 @@ export default function BookedInfo({
                         예약인원수
                     </Text>
                     <SelectorInput
-                        disabled
-                        value={bookInfo.covers}
+                        disabled={!modification}
+                        value={covers}
+                        onChange={(event) =>
+                            setCovers(event.target.value)}
                     // onChange={event => {
                     //     const { value } = event.target;
                     //     console.log(value);
@@ -95,23 +187,48 @@ export default function BookedInfo({
                         전화번호
                     </Text>
                     <TextInput
-                        disabled
-                        value={bookInfo.phone_number}
+                        disabled={!modification}
+                        value={phoneNumber}
+                        onChange={(event) =>
+                            setPhoneNumber(event.target.value)}
                     />
                 </InputContainer>
                 <Dummy />
             </InputsContainer>
             <ButtonContainer>
-                <Button>
+                <Button
+                    disabled={bookInfo.state === 2}
+                    onClick={handleReservation}
+                >
                     예약 취소
                 </Button>
-                <Button>
+                <Button
+                    disabled={bookInfo.state === 2}
+                    onClick={handleRecordArrival}
+                >
                     방문 완료
                 </Button>
-                <Button>
-                    예약 수정
+                <Button
+                    disabled={bookInfo.state === 2}
+                    onClick={handleReservationModification}
+                >
+                    {
+                        modification === 0 ? "예약 수정" : "수정 완료"
+                    }
                 </Button>
             </ButtonContainer>
+            <ArraivalInfoContainer>
+                <InputContainer>
+                    <Text>
+                        도착시간
+                    </Text>
+                    <TextInput
+                        disabled
+                        value={arrivelTime}
+                    />
+                </InputContainer>
+                <Dummy />
+            </ArraivalInfoContainer>
         </SelectContainer>
     )
 }

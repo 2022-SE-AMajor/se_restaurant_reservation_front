@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { makeReservation } from '../api';
+import { makeReservation, recordArrival } from '../api';
 import { setRefresh } from '../slice';
 import { SelectContainer } from './ModifyListpage_tableComponent'
 
@@ -83,6 +83,7 @@ export default function NotBookedInfo({ tableId, date, time }: NotBookedInfo) {
             covers: `${covers}`,
             phoneNumber,
         }).then(res => {
+            console.log("으악")
             console.log(res)
         }).catch(err => {
             console.log(err)
@@ -90,6 +91,37 @@ export default function NotBookedInfo({ tableId, date, time }: NotBookedInfo) {
             dispatch(setRefresh((value: any) => !value))
         })
     }
+
+    const handleReservationAndArrival = () => {
+        const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+        console.log(phoneNumber)
+        if (name === '') {
+            alert('이름을 입력해주세요')
+            return;
+        } else if (regPhone.test(phoneNumber) === false) {
+            alert('전화번호를 올바로 입력해주세요')
+            return;
+        } else {
+            console.log('올바른 입력입니다.')
+        }
+        makeReservation({
+            tableId,
+            date,
+            time,
+            name,
+            covers: `${covers}`,
+            phoneNumber,
+        }).then(res => {
+            recordArrival({ table_id: tableId, date, time })
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        }).catch(err => {
+            console.log(err)
+        }).finally(() => {
+            dispatch(setRefresh((value: any) => !value))
+        })
+    }
+
 
 
     return (
@@ -149,8 +181,10 @@ export default function NotBookedInfo({ tableId, date, time }: NotBookedInfo) {
                 >
                     예약 하기
                 </Button>
-                <Button>
-                    방문 예약
+                <Button
+                    onClick={handleReservationAndArrival}
+                >
+                    현장 방문
                 </Button>
             </ButtonContainer>
         </SelectContainer>

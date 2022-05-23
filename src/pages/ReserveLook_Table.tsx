@@ -66,11 +66,11 @@ export default function ReserveLook_Table({ date, time }: TablesProps) {
 
   useEffect(() => {
     const tableInfo: ReservationInfoProps[] = reservations.filter(aRes => aRes.table_id === parseInt(tableId))
-
     if (tableId === '' || tableInfo.length === 0) {
       setBookInfo(undefined)
       return
     }
+    // console.log("useEffect", tableId)
 
     setBookInfo({
       covers: tableInfo[0].covers,
@@ -103,7 +103,10 @@ export default function ReserveLook_Table({ date, time }: TablesProps) {
             key={aTableId}
             name={`${reservationState}`}
             value={aTableId === tableId ? "checked" : "unchecked"}
-            onClick={() => setTableId(aTableId)}
+            onClick={() => {
+              console.log(aTableId + '을 눌렀습니다.')
+              return setTableId(aTableId)
+            }}
           >
             {aTableId}번
           </Table>
@@ -115,6 +118,8 @@ export default function ReserveLook_Table({ date, time }: TablesProps) {
             <BookedInfo
               tableId={tableId}
               bookInfo={bookInfo}
+              date={date}
+              time={time}
             /> :
             <NotBookedInfo
               tableId={tableId}

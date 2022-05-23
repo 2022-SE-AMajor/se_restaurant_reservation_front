@@ -46,9 +46,11 @@ export default function Header() {
   const navigation = useNavigate()
   return (
     <Container>
-      <Title>wolfgang steakhouse</Title>
+      <Title
+        onClick={() => {
+          navigation('/')
+        }}>wolfgang steakhouse</Title>
       <Menu>
-
         {isLogedIn ?
           <Text
             onClick={() => {
