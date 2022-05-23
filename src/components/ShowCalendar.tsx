@@ -21,11 +21,12 @@ export const ImageContainer = styled.img.attrs({
   left: 2%;
 `;
 export const CalendarContainer = styled.div`
-  width: 700px;
+  flex:1;
+  /* width: 700px;
   height: 800px;
   position: relative;
   top: 8%;
-  left: 4%;
+  left: 4%; */
   .react-calendar {
     width: 700px;
     height: 450px;
@@ -84,7 +85,7 @@ export const CalendarContainer = styled.div`
   }
 `;
 export const ButtonContainer = styled.div``;
-export const SubmitButton = styled.button`
+export const TimeButton = styled.button`
   font-size: 20px;
   width: 120px;
   height: 50px;
@@ -93,7 +94,7 @@ export const SubmitButton = styled.button`
   border-radius: 5px;
   margin-left: 15px;
   margin-top: 15px;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.value === "checked" ? 'red' : 'lightgray'};
   box-shadow: 3px 3px gray;
 `;
 export const NextButton = styled.button`
