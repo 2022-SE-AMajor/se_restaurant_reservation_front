@@ -28,7 +28,7 @@ export const ButtonContainer = styled.div`
   top: 90%;
   left: 2%;
 `;
-export const SubmitButton = styled.button`
+export const TimeButton = styled.button`
   font-size: 20px;
   width: 120px;
   height: 50px;

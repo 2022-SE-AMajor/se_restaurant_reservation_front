@@ -78,7 +78,7 @@ export const Title = styled.span`
   font-size: 3em;
 `;
 export const SubTitle = styled.span``;
-export const SubmitButton = styled.button`
+export const TimeButton = styled.button`
   font-size: 2em;
   width: 400px;
   height: 55px;

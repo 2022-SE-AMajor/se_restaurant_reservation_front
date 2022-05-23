@@ -12,7 +12,7 @@ import {
   Date,
   Time,
   ButtonContainer,
-  SubmitButton,
+  TimeButton,
 } from "../components/ArrivalPageComponenet";
 
 export default function ArrivalPage() {
@@ -56,16 +56,16 @@ export default function ArrivalPage() {
       <Body>
         <ImageContainer />
         <ButtonContainer>
-          <SubmitButton onClick={() => setTime(9)}>9:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(10)}>10:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(11)}>11:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(12)}>12:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(13)}>13:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(14)}>14:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(15)}>15:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(16)}>16:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(17)}>17:00</SubmitButton>
-          <SubmitButton onClick={() => setTime(18)}>18:00</SubmitButton>
+          <TimeButton onClick={() => setTime(9)}>9:00</TimeButton>
+          <TimeButton onClick={() => setTime(10)}>10:00</TimeButton>
+          <TimeButton onClick={() => setTime(11)}>11:00</TimeButton>
+          <TimeButton onClick={() => setTime(12)}>12:00</TimeButton>
+          <TimeButton onClick={() => setTime(13)}>13:00</TimeButton>
+          <TimeButton onClick={() => setTime(14)}>14:00</TimeButton>
+          <TimeButton onClick={() => setTime(15)}>15:00</TimeButton>
+          <TimeButton onClick={() => setTime(16)}>16:00</TimeButton>
+          <TimeButton onClick={() => setTime(17)}>17:00</TimeButton>
+          <TimeButton onClick={() => setTime(18)}>18:00</TimeButton>
         </ButtonContainer>
         <Date>2020.6.4</Date>
         <Time>16:00</Time>

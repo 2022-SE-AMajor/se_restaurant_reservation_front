@@ -7,7 +7,7 @@ import {
   LoginContainer,
   LoigInForm,
   PsInput,
-  SubmitButton,
+  TimeButton,
   SubTitle,
   Title,
   TitleConatiner,
@@ -35,7 +35,6 @@ export default function LogInPage() {
     e.preventDefault();
     dispatch<any>(requestLogin({ id, password }));
     navigation('/')
-    //console.log("handleSubmit", id, password);
   };
 
   return (
@@ -49,7 +48,7 @@ export default function LogInPage() {
           <LoigInForm onSubmit={handleSubmit}>
             <IdInput onChange={handleIdChange} value={id} />
             <PsInput onChange={handlePsChange} value={password} />
-            <SubmitButton>Log In</SubmitButton>
+            <TimeButton>Log In</TimeButton>
           </LoigInForm>
         </LoginContainer>
         <ImageContainer />

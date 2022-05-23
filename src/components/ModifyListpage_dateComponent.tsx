@@ -84,7 +84,7 @@ export const CalendarContainer = styled.div`
   }
 `;
 export const ButtonContainer = styled.div``;
-export const SubmitButton = styled.button`
+export const TimeButton = styled.button`
   font-size: 20px;
   width: 120px;
   height: 50px;
