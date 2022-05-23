@@ -13,15 +13,15 @@ export const { actions, reducer } = createSlice({
     isLogedIn: false,
   },
   reducers: {
-    setLogedInTrue: (state) => ({
+    setLogedIn: (state,{payload}) => ({
      ...state,
-     isLogedIn: true
+     isLogedIn: payload
     }),
   },
 });
 
 export const {
-  setLogedInTrue,
+  setLogedIn,
 } = actions
 
 export function requestLogin({id,password}:any){
@@ -31,7 +31,7 @@ export function requestLogin({id,password}:any){
       login({id,password}).then(response =>{console.log("response",response)})
       // console.log("requestLogin",state)
       
-      dispatch(setLogedInTrue());
+      dispatch(setLogedIn(true));
     }catch (err) {
 
     }

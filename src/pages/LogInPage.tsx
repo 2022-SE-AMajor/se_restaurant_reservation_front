@@ -15,11 +15,13 @@ import {
 
 import { useDispatch } from "react-redux";
 import { requestLogin } from "../slice";
+import { useNavigate } from "react-router-dom";
 
 export default function LogInPage() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigation = useNavigate()
 
   const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -32,6 +34,7 @@ export default function LogInPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch<any>(requestLogin({ id, password }));
+    navigation('/')
     //console.log("handleSubmit", id, password);
   };
 

@@ -1,6 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { InitialStateProp, setLogedIn } from "../slice";
 
 const Container = styled.div`
   background-color: white;
@@ -37,25 +39,60 @@ const Text = styled.span`
 `;
 
 export default function Header() {
+  const { isLogedIn } = useSelector((state: InitialStateProp) => ({
+    isLogedIn: state.isLogedIn
+  }))
+  const dispatch = useDispatch()
+  const navigation = useNavigate()
   return (
     <Container>
       <Title>wolfgang steakhouse</Title>
       <Menu>
-        <Link to="/reserveLook_date">
-          <Text>예약 조회</Text>
-        </Link>
-        <Link to="/reservPage_date">
-          <Text>사전 예약</Text>
-        </Link>
-        <Link to="/modifyList">
-          <Text>예약 정보 변경</Text>
-        </Link>
-        <Link to="/cancle">
-          <Text>예약 취소</Text>
-        </Link>
-        <Link to="/onsiteReserv">
-          <Text>현장 예약</Text>
-        </Link>
+
+        {isLogedIn ?
+          <Text
+            onClick={() => {
+              dispatch(setLogedIn(false))
+            }}
+          >
+            로그아웃
+          </Text> :
+          null
+        }
+        <Text
+          aria-disabled="false"
+          onClick={() => {
+            navigation('/reserveLook_date')
+          }}
+        >예약 조회
+        </Text>
+        <Text
+          onClick={() => {
+            navigation('/reservPage_date')
+          }}
+        >사전 예약</Text>
+        {/* </Link> */}
+        {/* <Link to="/modifyList"> */}
+        <Text
+          onClick={() => {
+            navigation('/modifyList')
+          }}
+        >예약 정보 변경</Text>
+        {/* </Link> */}
+        {/* <Link to="/cancle"> */}
+        <Text
+          onClick={() => {
+            navigation('/cancle')
+          }}
+        >예약 취소</Text>
+        {/* </Link> */}
+        {/* <Link to="/onsiteReserv"> */}
+        <Text
+          onClick={() => {
+            navigation('/onsiteReserv')
+          }}
+        >현장 예약</Text>
+        {/* </Link> */}
       </Menu>
     </Container>
   );
