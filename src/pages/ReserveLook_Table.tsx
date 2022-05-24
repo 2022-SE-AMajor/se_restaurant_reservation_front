@@ -1,6 +1,9 @@
 /*예약조회 테이블*/
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { readReservation } from "../api";
+import BookedInfo from "../components/BookedInfo";
 import {
   Body,
   Container,
@@ -12,69 +15,119 @@ import {
   NextButton,
   Date,
   Time,
+  Header,
 } from "../components/ModifyListpage_tableComponent";
+import NotBookedInfo from "../components/NotBookedInfo";
+import { InitialStateProp, setRefresh } from "../slice";
 
-export default function ReserveLook_Table() {
-  const SelectBox1 = () => {
-    return (
-      <Select>
-        <option value="1">Table 1</option>
-        <option value="2">Table 2</option>
-        <option value="3">Table 3</option>
-        <option value="4">Table 4</option>
-        <option value="5">Table 5</option>
-        <option value="6">Table 6</option>
-        <option value="7">Table 7</option>
-        <option value="8">Table 8</option>
-        <option value="9">Table 9</option>
-        <option value="10">Table 10</option>
-        <option value="11">Table 11</option>
-        <option value="12">Table 12</option>
-        <option value="13">Table 13</option>
-        <option value="14">Table 14</option>
-        <option value="15">Table 15</option>
-        <option value="16">Table 16</option>
-      </Select>
-    );
-  };
-  const SelectBox2 = () => {
-    return (
-      <Select>
-        <option value="1">1 People</option>
-        <option value="2">2 People</option>
-        <option value="3">3 People</option>
-        <option value="4">4 People</option>
-      </Select>
-    );
-  };
-  const [isSelect, setIsSelect] = useState(0);
+type TablesProps = {
+  date: string;
+  time: string
+}
+
+export type ReservationInfoProps = {
+  covers: number;
+  name: string;
+  oid: number
+  phone_number: string
+  table_id: number
+  state: number
+}
+
+
+export default function ReserveLook_Table({ date, time }: TablesProps) {
+  console.log(date, time)
+  // const [chosenDate, chooseDate] = useState('')
+  const [tableId, setTableId] = useState('')
+  const [bookInfo, setBookInfo] = useState<ReservationInfoProps>();
+  const [reservations, serReservations] = useState<ReservationInfoProps[]>([])
+  const { refresh } = useSelector((state: InitialStateProp) => ({
+    refresh: state.refresh
+  }))
+  const tableIds = [
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'
+  ]
+
+  // const dispatch = useDispatch()
+
+  useEffect(() => {
+    readReservation({ date, time }).then(res => {
+      const results = res.data.result
+      results.pop()
+      serReservations(results)
+      console.log(results)
+    }).catch(err => {
+      console.log(err)
+    }).finally(() => {
+      // dispatch(setRefresh(false))
+    });
+    setTableId('')
+  }, [date, time, refresh])
+
+  useEffect(() => {
+    const tableInfo: ReservationInfoProps[] = reservations.filter(aRes => aRes.table_id === parseInt(tableId))
+    if (tableId === '' || tableInfo.length === 0) {
+      setBookInfo(undefined)
+      return
+    }
+    // console.log("useEffect", tableId)
+
+    setBookInfo({
+      covers: tableInfo[0].covers,
+      name: tableInfo[0].name,
+      oid: tableInfo[0].oid,
+      phone_number: tableInfo[0].phone_number,
+      table_id: tableInfo[0].table_id,
+      state: tableInfo[0].state,
+    })
+
+  }, [tableId])
+
+
   return (
     <Container>
-      <Body>
-        <ImageContainer />
-        <Date>2020.6.4</Date>
-        <Time>16:00</Time>
-        <TableContainer>
-          <Table onClick={() => setIsSelect(1)} />
-          <Table onClick={() => setIsSelect(2)} />
-          <Table onClick={() => setIsSelect(3)} />
-          <Table onClick={() => setIsSelect(4)} />
-          <Table onClick={() => setIsSelect(5)} />
-          <Table onClick={() => setIsSelect(6)} />
-          <Table onClick={() => setIsSelect(7)} />
-          <Table onClick={() => setIsSelect(8)} />
-          <Table onClick={() => setIsSelect(9)} />
-          <Table onClick={() => setIsSelect(10)} />
-          <Table onClick={() => setIsSelect(11)} />
-          <Table onClick={() => setIsSelect(12)} />
-          <Table onClick={() => setIsSelect(13)} />
-          <Table onClick={() => setIsSelect(14)} />
-          <Table onClick={() => setIsSelect(15)} />
-          <Table onClick={() => setIsSelect(16)} />
-          <SelectContainer>000님 [3인] 010-@@@@_@@@@</SelectContainer>
-          <NextButton>next</NextButton>
-        </TableContainer>
-      </Body>
+      {/* <Body> */}
+      {/* <ImageContainer /> */}
+      <Header>
+        <Date>{date}</Date>
+        <Time>{time}</Time>
+      </Header>
+      <TableContainer>
+        {tableIds.map(aTableId => {
+          let reservationState = 0
+          const res = reservations.filter(aRes => aRes.table_id === parseInt(aTableId))
+          if (res.length > 0) {
+            reservationState = res[0].state
+          }
+          return <Table
+            key={aTableId}
+            name={`${reservationState}`}
+            value={aTableId === tableId ? "checked" : "unchecked"}
+            onClick={() => {
+              console.log(aTableId + '을 눌렀습니다.')
+              return setTableId(aTableId)
+            }}
+          >
+            {aTableId}번
+          </Table>
+        })}
+      </TableContainer>
+      {
+        tableId === '' ? null :
+          bookInfo ?
+            <BookedInfo
+              tableId={tableId}
+              bookInfo={bookInfo}
+              date={date}
+              time={time}
+            /> :
+            <NotBookedInfo
+              tableId={tableId}
+              date={date}
+              time={time}
+            />
+      }
+      {/* </Body> */}
     </Container>
   );
 }

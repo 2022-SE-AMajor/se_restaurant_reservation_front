@@ -7,7 +7,7 @@ import {
   LoginContainer,
   LoigInForm,
   PsInput,
-  SubmitButton,
+  TimeButton,
   SubTitle,
   Title,
   TitleConatiner,
@@ -15,11 +15,13 @@ import {
 
 import { useDispatch } from "react-redux";
 import { requestLogin } from "../slice";
+import { useNavigate } from "react-router-dom";
 
 export default function LogInPage() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigation = useNavigate()
 
   const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -32,7 +34,7 @@ export default function LogInPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch<any>(requestLogin({ id, password }));
-    //console.log("handleSubmit", id, password);
+    navigation('/')
   };
 
   return (
@@ -46,7 +48,7 @@ export default function LogInPage() {
           <LoigInForm onSubmit={handleSubmit}>
             <IdInput onChange={handleIdChange} value={id} />
             <PsInput onChange={handlePsChange} value={password} />
-            <SubmitButton>Log In</SubmitButton>
+            <TimeButton>Log In</TimeButton>
           </LoigInForm>
         </LoginContainer>
         <ImageContainer />

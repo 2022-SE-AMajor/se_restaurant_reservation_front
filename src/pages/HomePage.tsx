@@ -30,29 +30,9 @@ export default function HomePage() {
             <ImageCheck />
             <SubTitle>예약 조회</SubTitle>
           </Link>
-          <Link to="/reservPage_date">
-            <ImageReserv />
-            <SubTitle>사전 예약</SubTitle>
-          </Link>
-          <Link to="/modifyList">
-            <ImageModify />
-            <SubTitle>예약 정보 변경</SubTitle>
-          </Link>
-          <Link to="/cancle">
-            <ImageCancle />
-            <SubTitle>예약 취소</SubTitle>
-          </Link>
-          <Link to="/arrivalPage">
-            <Imagearrival />
-            <SubTitle>현장 도착</SubTitle>
-          </Link>
           <Link to="/statisticPage">
             <ImageStatistic />
             <SubTitle>통계</SubTitle>
-          </Link>
-          <Link to="/onsiteReserv">
-            <ImageOnsite />
-            <SubTitle>현장 예약</SubTitle>
           </Link>
         </ButtonContainer>
       </Body>

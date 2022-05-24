@@ -1,12 +1,19 @@
 {
   "files": {
-    "main.js": "/static/js/main.d7a99fd3.js",
+    "main.css": "/static/css/main.f64ec082.css",
+    "main.js": "/static/js/main.e9a2e4ea.js",
     "static/media/banner2.png": "/static/media/banner2.262ae3c234dc6e9b7276.png",
     "static/media/banner1.png": "/static/media/banner1.b41cf15f38d205aee443.png",
+    "static/media/현장예약.png": "/static/media/현장예약.dfad6e7be420fc6aa732.png",
+    "static/media/통계.png": "/static/media/통계.21571441234bfeadfd1d.png",
+    "static/media/현장도착.png": "/static/media/현장도착.4679468145c61f12cbcb.png",
+    "static/media/예약조회.png": "/static/media/예약조회.e5811dc23ae7efb3bd2f.png",
     "index.html": "/index.html",
-    "main.d7a99fd3.js.map": "/static/js/main.d7a99fd3.js.map"
+    "main.f64ec082.css.map": "/static/css/main.f64ec082.css.map",
+    "main.e9a2e4ea.js.map": "/static/js/main.e9a2e4ea.js.map"
   },
   "entrypoints": [
-    "static/js/main.d7a99fd3.js"
+    "static/css/main.f64ec082.css",
+    "static/js/main.e9a2e4ea.js"
   ]
 }

@@ -65,7 +65,7 @@ export const PsInput = styled.input.attrs({
   border-radius: 10px;
   margin-bottom: 2em;
 `;
-export const SubmitButton = styled.button`
+export const TimeButton = styled.button`
   font-size: 2em;
   width: 400px;
   height: 55px;

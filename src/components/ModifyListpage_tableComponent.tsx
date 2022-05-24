@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex:1;
   display: flex;
   flex-direction: column;
 `;
 
 export const Body = styled.div`
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: row;
-  height: 1000px;
+  /* height: 1000px; */
 `;
+
+export const Header = styled.div`
+  display: flex;
+  /* justify-content: ; */
+  gap:10%;
+`
 
 export const ImageContainer = styled.img.attrs({
   src: require("./images/banner2.png"),
@@ -22,25 +29,22 @@ export const ImageContainer = styled.img.attrs({
   left: 2%;
 `;
 export const Date = styled.div`
-  position: relative;
-  top: 7%;
-  left: 6%;
   font-weight: bold;
   font-size: 35px;
 `;
 export const Time = styled.div`
-  position: relative;
-  top: 7%;
-  left: 37%;
+
   font-weight: bold;
   font-size: 35px;
 `;
 export const TableContainer = styled.div`
-  width: 700px;
-  height: 500px;
-  position: relative;
+  /* width: 700px; */
+  /* height: 500px; */
+  /* position: relative;
   top: 12%;
-  left: -9%;
+  left: -9%; */
+  Grid-column-start : 1 3;
+  Grid-column-end : 1 4;
   background-color: #e3e3e3;
 `;
 export const Table = styled.button`
@@ -48,18 +52,33 @@ export const Table = styled.button`
   height: 80px;
   margin: 3%;
   margin-left: 4%;
-  background-color: #2ec160;
+  font-size:20px;
+  font-weight: 600;
+  border: ${(props) => props.value === "checked" ? "10px solid red" : "1px solid black"};
+  background-color: ${(props) => {
+    if (props.name === "0") {
+      return '#2ec160'
+    } else if (props.name === "1") {
+      return 'red'
+    } else if (props.name === "2") {
+      return 'purple'
+    }
+  }};
+  /* background-color: #2ec160; */
   box-shadow: 3px 3px gray;
   border-radius: 10px;
 `;
 export const SelectContainer = styled.div`
-  width: 680px;
-  height: 45px;
-  background-color: #a3a3a3;
+  /* width: 680px; */
+  /* height: 45px; */
+  background-color: #e3e3e3;
   margin-top: 40px;
   font-weight: bold;
   font-size: 25px;
   padding: 10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 `;
 export const Select = styled.select`
   position: relative;
@@ -78,7 +97,7 @@ export const Title = styled.span`
   font-size: 3em;
 `;
 export const SubTitle = styled.span``;
-export const SubmitButton = styled.button`
+export const TimeButton = styled.button`
   font-size: 2em;
   width: 400px;
   height: 55px;
