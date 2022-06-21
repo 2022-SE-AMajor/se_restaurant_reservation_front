@@ -1,6 +1,6 @@
 import  axios, { AxiosResponse } from 'axios'
 
-const baseURL = `http://192.168.45.104:4000`
+const baseURL = `http://192.168.45.39:4000`
 
 const api = axios.create({
     baseURL:baseURL,
@@ -84,3 +84,5 @@ export const modifyReservation = ({oid,date,time, covers, tableId,name, phoneNum
     covers,
     phone_number:phoneNumber
 })
+
+export const autoDelete = ():Promise<AxiosResponse<any>>=>api.delete('/autoDelete') 

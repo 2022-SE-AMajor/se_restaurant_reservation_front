@@ -14,6 +14,7 @@ import {
 } from "../components/ShowCalendar";
 import { useDispatch } from "react-redux";
 import ReserveLook_Table from "./ReserveLook_Table";
+import { autoDelete } from "../api";
 
 export default function ReserveLook_date() {
   const { selectDate, selectTime } = useParams();
@@ -44,6 +45,11 @@ export default function ReserveLook_date() {
     console.log(time);
   }, [time]);
 
+
+  const handleTimeButton = async (aTime: string) => {
+    setTime(aTime);
+    await autoDelete();
+  };
   return (
     <Container>
       <Body>
@@ -58,7 +64,7 @@ export default function ReserveLook_date() {
             {times.map(aTime => {
               return <TimeButton key={aTime}
                 value={aTime === time ? "checked" : "unchecked"}
-                onClick={() => setTime(aTime)}>{aTime}</TimeButton>
+                onClick={() => { handleTimeButton(aTime) }}>{aTime}</TimeButton>
             })}
 
           </ButtonContainer>
