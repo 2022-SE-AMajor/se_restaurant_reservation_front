@@ -9,7 +9,19 @@ export const Body = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  height: 1000px;
+  /* height: 1000px; */
+  @media (min-width: 769px) {
+     flex-direction: row;
+
+    }
+
+
+  @media  (max-width: 768px) {
+     /* 모바일에 사용될 스트일 시트를 여기에 작성합니다. */ 
+     flex-direction: column;
+
+    }
+
 `;
 export const ImageContainer = styled.img.attrs({
   src: require("./images/banner2.png"),
